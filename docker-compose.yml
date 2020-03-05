@@ -9,3 +9,7 @@ services:
       MYSQL_DATABASE: imdb
     ports:
       - "3308:3306"
+    volumes:
+      - my-datavolume:/var/lib/mysql
+volumes:
+  my-datavolume:

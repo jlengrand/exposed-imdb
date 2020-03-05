@@ -15,7 +15,8 @@ See [LICENSE](/LICENSE)
 
 * Use `;DB_CLOSE_DELAY=-1` if you want to persist the in-memory database information over more than a single transaction.
   * `Database.connect("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1", driver = "org.h2.Driver", user = "root", password = "")`
-
+* Use `?useSSL=false` to avoid SSL exceptions (for dev only!) on MySQL.
+  * `Database.connect("jdbc:mysql://localhost:3308/imdb?useSSL=false", driver = "com.mysql.jdbc.Driver", user = "root", password = "aRootPassword")`
 
 ## Author
 
