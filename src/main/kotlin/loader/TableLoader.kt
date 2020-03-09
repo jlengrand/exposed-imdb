@@ -1,20 +1,10 @@
 package loader
 
-import dsl.TitleRatings
-import dsl.Titles
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.statements.BatchInsertStatement
 import org.jetbrains.exposed.sql.transactions.transaction
 import java.io.File
-import tsv.Reader
 
-
-fun BatchInsertStatement.loadItem(item: String){
-    val items = item.split("\t")
-    this[TitleRatings.tconst] = items[0]
-    this[TitleRatings.averageRating] = if (items[1] != Reader.NO_DATA) items[1].toFloat() else null
-    this[TitleRatings.numVotes] = if (items[2] != Reader.NO_DATA) items[2].toInt() else null
-}
 
 object TableLoader{
 

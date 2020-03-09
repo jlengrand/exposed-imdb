@@ -31,19 +31,9 @@ fun main() {
         )
 //        db = Database.connect("jdbc:mysql://localhost:3308/imdb?useSSL=false&allowPublicKeyRetrieval=true&rewriteBatchedStatements=true", driver = "com.mysql.jdbc.Driver", user = "root", password = "aRootPassword")
 
-        TableLoader.process(db, TitleRatings, "./datasets/title.ratings.tsv", 5, load())
+        TitleRatingsLoader.load(db)
+        TitleBasicsLoader.load(db)
     }
 
     println("Time was : ${time / 1000 / 60 } minutes ${time / 1000 % 60 } seconds")
-}
-
-
-fun load(): BatchInsertStatement.(String) -> Unit {
-    return {
-        val items = it.split("\t")
-
-        this[TitleRatings.tconst] = items[0]
-        this[TitleRatings.averageRating] = if (items[1] != Reader.NO_DATA) items[1].toFloat() else null
-        this[TitleRatings.numVotes] = if (items[2] != Reader.NO_DATA) items[2].toInt() else null
-    }
 }
