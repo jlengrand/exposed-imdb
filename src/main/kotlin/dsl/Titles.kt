@@ -1,9 +1,9 @@
 package dsl
 
-import org.jetbrains.exposed.dao.id.IntIdTable
 import org.jetbrains.exposed.sql.Column
+import org.jetbrains.exposed.sql.Table
 
-object Titles : IntIdTable(){
+object Titles : Table(){
     val tconst : Column<String> = varchar("tconst", 10).uniqueIndex()
     val titleType : Column<String> = varchar("titleType", 50) // Own Table?
     val primaryTitle : Column<String> = varchar("primaryTitle", 500)
