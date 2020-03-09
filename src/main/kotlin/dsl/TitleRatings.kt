@@ -12,12 +12,4 @@ object TitleRatings : Table(){
     val numVotes : Column<Int?> = integer("numVotes").nullable()
 
     override val primaryKey = PrimaryKey(tconst, name = "tconst")
-
-    fun insertFromListString(values : List<String>){
-        TitleRatings.insert {
-                it[tconst] = values[0]
-                it[averageRating] = if (values[1] != NO_DATA) values[1].toFloat() else null
-                it[numVotes] = if (values[2] != NO_DATA) values[2].toInt() else null
-            }
-    }
 }

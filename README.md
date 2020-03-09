@@ -17,6 +17,8 @@ See [LICENSE](/LICENSE)
   * `Database.connect("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1", driver = "org.h2.Driver", user = "root", password = "")`
 * Use `?useSSL=false` to avoid SSL exceptions (for dev only!) on MySQL.
   * `Database.connect("jdbc:mysql://localhost:3308/imdb?useSSL=false", driver = "com.mysql.jdbc.Driver", user = "root", password = "aRootPassword")`
+* Use `rewriteBatchedStatements=true` when inserting large volumes of data to have your driver rewrite your query
+* `.map` keeps stack of memory while `for` loop doesn't? I get a OME when running with map
 
 ## Author
 
