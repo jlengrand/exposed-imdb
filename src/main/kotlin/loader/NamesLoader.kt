@@ -10,7 +10,7 @@ import org.jetbrains.exposed.sql.statements.BatchInsertStatement
 import tsv.Reader
 import kotlin.system.measureTimeMillis
 
-object NameLoader{
+object NamesLoader{
 
     fun load(db: Database){
         println("Loading Names Basics")

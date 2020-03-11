@@ -1,5 +1,6 @@
 import loader.CrewsLoader
 import loader.EpisodesLoader
+import loader.PrincipalsLoader
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.transactions.transaction
@@ -30,5 +31,6 @@ fun main() {
 //        TitleBasicsLoader.load(db)
 //    NameBasicsLoader.load(db)
 //    CrewsLoader.load(db)
-    EpisodesLoader.load(db)
+//    EpisodesLoader.load(db)
+    PrincipalsLoader.load(db)  // Time was : 21 minutes 23 seconds
 }

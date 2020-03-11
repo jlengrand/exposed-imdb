@@ -14,5 +14,5 @@ object Titles : Table(){
     val runtimeMinutes : Column<Long?> = long("runtimeMinutes").nullable()
     val genres : Column<String> = varchar("genres", 50) // TODO: Own Table?
 
-    override val primaryKey = PrimaryKey(tconst, name = "tconst")
+    override val primaryKey = PrimaryKey(tconst)
 }

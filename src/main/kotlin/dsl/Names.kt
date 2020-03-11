@@ -11,5 +11,5 @@ object Names : Table(){
     val primaryProfession : Column<String> = varchar("primaryProfession", 500)
     val knownForTitles : Column<String> = varchar("knownForTitles", 200) // TODO: Improve!
 
-    override val primaryKey = PrimaryKey(nconst, name = "nconst")
+    override val primaryKey = PrimaryKey(nconst)
 }

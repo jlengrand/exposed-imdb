@@ -1,6 +1,6 @@
 package loader
 
-import dsl.Crew
+import dsl.Crews
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.statements.BatchInsertStatement
 import kotlin.system.measureTimeMillis
@@ -14,7 +14,7 @@ object CrewsLoader {
         val time = measureTimeMillis() { // duplication
 
             TableLoader.process(db,
-                Crew,
+                Crews,
                 "./datasets/title.crew.tsv",
                 5000,
                 insert()
@@ -28,8 +28,8 @@ private fun insert(): BatchInsertStatement.(String) -> Unit {
     return {
         val items = it.split("\t")
 
-        this[Crew.tconst] = items[0]
-        this[Crew.directors] = items[1]
-        this[Crew.writers] = items[2]
+        this[Crews.tconst] = items[0]
+        this[Crews.directors] = items[1]
+        this[Crews.writers] = items[2]
     }
 }
