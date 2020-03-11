@@ -19,6 +19,8 @@ See [LICENSE](/LICENSE)
   * `Database.connect("jdbc:mysql://localhost:3308/imdb?useSSL=false", driver = "com.mysql.jdbc.Driver", user = "root", password = "aRootPassword")`
 * Use `rewriteBatchedStatements=true` when inserting large volumes of data to have your driver rewrite your query
 * `.map` keeps stack of memory while `for` loop doesn't? I get a OME when running with map
+* reason to use partitions
+* dsl loading copy paste prone
 
 ## Author
 

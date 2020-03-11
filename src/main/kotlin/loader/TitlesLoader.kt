@@ -6,7 +6,7 @@ import org.jetbrains.exposed.sql.statements.BatchInsertStatement
 import tsv.Reader
 import kotlin.system.measureTimeMillis
 
-object TitleBasicsLoader{
+object TitleLoader{
 
     fun load(db: Database){
         println("Loading Title Basics")

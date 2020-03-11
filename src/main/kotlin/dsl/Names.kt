@@ -9,7 +9,7 @@ object Names : Table(){
     val birthYear : Column<Int?> = integer("birthYear").nullable()
     val deathYear : Column<Int?> = integer("deathYear").nullable()
     val primaryProfession : Column<String> = varchar("primaryProfession", 500)
-    val knownForTitles : Column<String> = varchar("knownForTitles", 200) // Improve!
+    val knownForTitles : Column<String> = varchar("knownForTitles", 200) // TODO: Improve!
 
     override val primaryKey = PrimaryKey(nconst, name = "nconst")
 }

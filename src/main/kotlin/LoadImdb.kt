@@ -1,13 +1,8 @@
-package loader
-
-import dsl.TitleRatings
-import dsl.Titles
+import loader.CrewsLoader
+import loader.EpisodesLoader
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.SchemaUtils
-import org.jetbrains.exposed.sql.statements.BatchInsertStatement
 import org.jetbrains.exposed.sql.transactions.transaction
-import tsv.Reader
-import kotlin.system.measureTimeMillis
 
 fun main() {
 
@@ -20,6 +15,7 @@ fun main() {
         password = ""
     )
 
+    transaction(db) { SchemaUtils.dropDatabase("imdb") }
     transaction(db) { SchemaUtils.createDatabase("imdb") }
 
     db = Database.connect(
@@ -32,5 +28,7 @@ fun main() {
 
 //        TitleRatingsLoader.load(db)
 //        TitleBasicsLoader.load(db)
-    NameBasicsLoader.load(db)
+//    NameBasicsLoader.load(db)
+//    CrewsLoader.load(db)
+    EpisodesLoader.load(db)
 }

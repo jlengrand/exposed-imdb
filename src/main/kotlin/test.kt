@@ -18,7 +18,7 @@ object Cities : Table() {
     override val primaryKey = PrimaryKey(id, name = "PK_Cities_ID")
 }
 
-fun main() {
+fun main2() {
     Database.connect("jdbc:h2:mem:test", driver = "org.h2.Driver", user = "root", password = "")
 
     transaction {
