@@ -1,6 +1,7 @@
 package loader
 
 import dsl.Titles
+import loader.generic.TableLoader
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.statements.BatchInsertStatement
 import tsv.Reader
@@ -9,7 +10,7 @@ import kotlin.system.measureTimeMillis
 object TitleLoader{
 
     fun load(db: Database){
-        println("Loading Title Basics")
+        println("########## Loading Titles ##########")
 
         val time = measureTimeMillis() { // duplication
 

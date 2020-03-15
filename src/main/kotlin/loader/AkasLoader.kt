@@ -1,6 +1,6 @@
 package loader
 
-import dsl.Ratings
+import dsl.Akas
 import loader.generic.TableLoader
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.statements.BatchInsertStatement
@@ -8,17 +8,17 @@ import tsv.Reader
 import kotlin.system.measureTimeMillis
 
 
-object RatingsLoader {
+object AkasLoader {
 
     fun load(db: Database){
-        println("########## Loading Ratings ##########")
+        println("########## Loading Akas ##########")
 
         val time = measureTimeMillis() { // duplication
 
             TableLoader.process(db,
-                Ratings,
-                "./datasets/title.ratings.tsv",
-                1,
+                Akas,
+                "./datasets/title.akas.tsv",
+                5000,
                 insert()
             )
         }
@@ -26,13 +26,17 @@ object RatingsLoader {
     }
 }
 
-
 private fun insert(): BatchInsertStatement.(String) -> Unit {
     return {
         val items = it.split("\t")
 
-        this[Ratings.tconst] = items[0]
-        this[Ratings.averageRating] = if (items[1] != Reader.NO_DATA) items[1].toFloat() else null
-        this[Ratings.numVotes] = if (items[2] != Reader.NO_DATA) items[2].toInt() else null
+        this[Akas.tconst] = items[0]
+        this[Akas.ordering] = items[1].toInt()
+        this[Akas.title] = items[2]
+        this[Akas.region] = items[3]
+        this[Akas.language] = items[4]
+        this[Akas.types] = if (items[5] != Reader.NO_DATA) items[5] else null
+        this[Akas.attributes] = if (items[6] != Reader.NO_DATA) items[6] else null
+        this[Akas.isOriginalTitle] = items[7].toBoolean()
     }
 }

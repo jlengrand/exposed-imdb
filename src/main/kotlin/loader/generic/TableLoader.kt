@@ -1,4 +1,4 @@
-package loader
+package loader.generic
 
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.statements.BatchInsertStatement

@@ -1,15 +1,20 @@
 package dsl
 
-import org.jetbrains.exposed.sql.Column
+import org.jetbrains.exposed.dao.id.IntIdTable
 import org.jetbrains.exposed.sql.Table
 
-object Names : Table(){
-    val nconst : Column<String> = varchar("nconst", 10).uniqueIndex()
-    val primaryName : Column<String> = varchar("primaryName", 300)
-    val birthYear : Column<Int?> = integer("birthYear").nullable()
-    val deathYear : Column<Int?> = integer("deathYear").nullable()
-    val primaryProfession : Column<String> = varchar("primaryProfession", 500)
-    val knownForTitles : Column<String> = varchar("knownForTitles", 200) // TODO: Improve!
+object Names : IntIdTable(){
+    val nconst = (varchar("nconst", 10) references KnownForTitles.nconst).uniqueIndex()
+    val primaryName = varchar("primaryName", 300).index()
+    val birthYear = integer("birthYear").nullable()
+    val deathYear= integer("deathYear").nullable()
+    val primaryProfession  = varchar("primaryProfession", 500)
+}
 
-    override val primaryKey = PrimaryKey(nconst)
+object KnownForTitles : Table(){
+    val id = integer("id").autoIncrement() // Column<Int>
+    val nconst = varchar("nconst", 10).index("knownfor_names")
+    val tconst = (varchar("tconst", 10) references Titles.tconst).index("knownfor_titles")
+
+    override val primaryKey = PrimaryKey(id)
 }

@@ -1,6 +1,7 @@
 package loader
 
 import dsl.Episodes
+import loader.generic.TableLoader
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.statements.BatchInsertStatement
 import tsv.Reader
@@ -9,7 +10,7 @@ import kotlin.system.measureTimeMillis
 object EpisodesLoader{
 
     fun load(db: Database){
-        println("Loading Episodes")
+        println("########## Loading Episodes ##########")
 
         val time = measureTimeMillis() { // duplication
 

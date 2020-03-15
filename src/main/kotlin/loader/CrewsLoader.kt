@@ -1,6 +1,7 @@
 package loader
 
 import dsl.Crews
+import loader.generic.TableLoader
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.statements.BatchInsertStatement
 import kotlin.system.measureTimeMillis
@@ -9,7 +10,7 @@ import kotlin.system.measureTimeMillis
 object CrewsLoader {
 
     fun load(db: Database){
-        println("Loading Crews")
+        println("########## Loading Crews ##########")
 
         val time = measureTimeMillis() { // duplication
 

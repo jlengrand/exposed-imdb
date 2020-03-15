@@ -21,6 +21,7 @@ See [LICENSE](/LICENSE)
 * `.map` keeps stack of memory while `for` loop doesn't? I get a OME when running with map
 * reason to use partitions
 * dsl loading copy paste prone
+* Cross Join
 
 ## Author
 
