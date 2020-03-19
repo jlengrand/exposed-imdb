@@ -1,8 +1,10 @@
 package nl.lengrand.imdb
 
-import dsl.Ratings
-import dsl.Titles
+import nl.lengrand.imdb.dsl.Ratings
+import nl.lengrand.imdb.dsl.Titles
 import org.jetbrains.exposed.sql.Database
+import org.jetbrains.exposed.sql.and
+import org.jetbrains.exposed.sql.select
 import org.jetbrains.exposed.sql.transactions.transaction
 import kotlin.system.measureTimeMillis
 
@@ -71,5 +73,4 @@ fun main(){
             println(result.last())
         }
     }}");
-
 }

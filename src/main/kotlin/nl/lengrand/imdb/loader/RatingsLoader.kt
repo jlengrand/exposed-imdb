@@ -1,6 +1,6 @@
 package nl.lengrand.imdb.loader
 
-import dsl.Ratings
+import nl.lengrand.imdb.dsl.Ratings
 import nl.lengrand.imdb.loader.generic.TableLoader
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.statements.BatchInsertStatement
