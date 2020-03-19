@@ -4,9 +4,9 @@ import org.jetbrains.exposed.sql.Column
 import org.jetbrains.exposed.sql.Table
 
 object Crews : Table(){
-    val tconst : Column<String> = varchar("tconst", 10).uniqueIndex()
-    val directors : Column<String> = text("directors") // TODO:  better
-    val writers : Column<String> = text("writers") // TODO: better
+    val tconst = varchar("tconst", 10).uniqueIndex()
+    val directors = text("directors") // TODO:  better
+    val writers = text("writers") // TODO: better
 
     override val primaryKey = PrimaryKey(tconst)
 
