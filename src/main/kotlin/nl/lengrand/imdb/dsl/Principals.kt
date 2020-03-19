@@ -1,8 +1,7 @@
-package dsl
+package nl.lengrand.imdb.dsl
 
 import org.jetbrains.exposed.sql.Column
 import org.jetbrains.exposed.sql.Table
-import org.jetbrains.exposed.sql.statements.api.ExposedBlob
 
 object Principals : Table() {
     val tconst: Column<String> = varchar("tconst", 10)
@@ -12,5 +11,9 @@ object Principals : Table() {
     val job: Column<String?> = text("job").nullable()
     val characters: Column<String?> = text("characters").nullable()
 
-    override val primaryKey = PrimaryKey(tconst, ordering, nconst)
+    override val primaryKey = PrimaryKey(
+        tconst,
+        ordering,
+        nconst
+    )
 }

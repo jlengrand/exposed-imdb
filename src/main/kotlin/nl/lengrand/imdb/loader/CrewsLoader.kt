@@ -1,7 +1,7 @@
-package loader
+package nl.lengrand.imdb.loader
 
-import dsl.Crews
-import loader.generic.TableLoader
+import nl.lengrand.imdb.dsl.Crews
+import nl.lengrand.imdb.loader.generic.TableLoader
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.statements.BatchInsertStatement
 import kotlin.system.measureTimeMillis

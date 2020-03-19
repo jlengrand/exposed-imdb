@@ -1,10 +1,10 @@
-package loader
+package nl.lengrand.imdb.loader
 
-import dsl.Akas
-import loader.generic.TableLoader
+import nl.lengrand.imdb.dsl.Akas
+import nl.lengrand.imdb.loader.generic.TableLoader
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.statements.BatchInsertStatement
-import tsv.Reader
+import nl.lengrand.imdb.tsv.Reader
 import kotlin.system.measureTimeMillis
 
 

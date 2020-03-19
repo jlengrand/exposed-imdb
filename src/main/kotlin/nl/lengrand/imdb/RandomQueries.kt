@@ -1,10 +1,8 @@
-package queries
+package nl.lengrand.imdb
 
 import dsl.Ratings
 import dsl.Titles
 import org.jetbrains.exposed.sql.Database
-import org.jetbrains.exposed.sql.and
-import org.jetbrains.exposed.sql.select
 import org.jetbrains.exposed.sql.transactions.transaction
 import kotlin.system.measureTimeMillis
 
@@ -34,29 +32,43 @@ fun main(){
 //    }
 
     // Find the rating for a specific movie
-    println("Ratings query took : ${measureTimeMillis() {
-        transaction(db) {
-            var result = (Titles crossJoin Ratings).slice(Titles.primaryTitle, Titles.titleType, Ratings.averageRating, Ratings.numVotes).select {
-                ((Titles.primaryTitle like "The Lego Batman Movie") and (Titles.titleType like "movie")
-                        and Titles.tconst.eq(Ratings.tconst))
-            }.toList()
+//    println("Ratings query took : ${measureTimeMillis() {
+//        transaction(db) {
+//            var result = (Titles crossJoin Ratings).slice(Titles.primaryTitle, Titles.titleType, Ratings.averageRating, Ratings.numVotes).select {
+//                ((Titles.primaryTitle like "The Lego Batman Movie") and (Titles.titleType like "movie")
+//                        and Titles.tconst.eq(Ratings.tconst))
+//            }.toList()
+//
+//            println(result.size)
+//            println(result)
+//            println(result.first())
+//        }
+//    }}");
 
-            println(result.size)
-            println(result)
-            println(result.first())
-        }        
-    }}");
+//    println("Ratings query took : ${measureTimeMillis() {
+//        transaction(db) {
+//            var result = (Titles innerJoin Ratings).slice(Titles.primaryTitle, Titles.titleType, Ratings.averageRating, Ratings.numVotes).select {
+//                ((Titles.primaryTitle like "The Lego Batman Movie") and (Titles.titleType like "movie")
+//                        and Titles.tconst.eq(Ratings.tconst))
+//            }.toList()
+//
+//            println(result.size)
+//            println(result)
+//            println(result.first())
+//        }
+//    }}");
 
     println("Ratings query took : ${measureTimeMillis() {
         transaction(db) {
             var result = (Titles innerJoin Ratings).slice(Titles.primaryTitle, Titles.titleType, Ratings.averageRating, Ratings.numVotes).select {
-                ((Titles.primaryTitle like "The Lego Batman Movie") and (Titles.titleType like "movie")
+                ((Titles.primaryTitle like "%batman%") and (Titles.titleType like "movie")
                         and Titles.tconst.eq(Ratings.tconst))
-            }.toList()
+            }.orderBy(Ratings.averageRating)
+                .toList()
 
             println(result.size)
             println(result)
-            println(result.first())
+            println(result.last())
         }
     }}");
 

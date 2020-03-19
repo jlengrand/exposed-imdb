@@ -1,14 +1,12 @@
-package loader
+package nl.lengrand.imdb.loader
 
-import dsl.KnownForTitles
-import dsl.Names
-import loader.generic.TableLoader
+import nl.lengrand.imdb.dsl.KnownForTitles
+import nl.lengrand.imdb.dsl.Names
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.batchInsert
-import org.jetbrains.exposed.sql.statements.BatchInsertStatement
 import org.jetbrains.exposed.sql.transactions.transaction
-import tsv.Reader
+import nl.lengrand.imdb.tsv.Reader
 import java.io.File
 import kotlin.system.measureTimeMillis
 

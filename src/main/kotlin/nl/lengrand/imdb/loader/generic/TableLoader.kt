@@ -1,4 +1,4 @@
-package loader.generic
+package nl.lengrand.imdb.loader.generic
 
 import org.jetbrains.exposed.sql.*
 import org.jetbrains.exposed.sql.statements.BatchInsertStatement
@@ -10,7 +10,13 @@ object TableLoader{
 
     fun process(db : Database, table: Table, fileName: String, partitions: Int, operation: BatchInsertStatement.(String) -> Unit){
         createTable(db, table)
-        loadData(db, table, fileName, partitions, operation)
+        loadData(
+            db,
+            table,
+            fileName,
+            partitions,
+            operation
+        )
     }
 
     private fun createTable(db : Database, table: Table){

@@ -1,4 +1,4 @@
-package tsv
+package nl.lengrand.imdb.tsv
 
 object Reader {
 

@@ -1,4 +1,4 @@
-package dsl
+package nl.lengrand.imdb.dsl
 
 import org.jetbrains.exposed.sql.Column
 import org.jetbrains.exposed.sql.Table
