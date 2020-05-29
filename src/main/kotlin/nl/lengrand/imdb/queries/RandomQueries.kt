@@ -1,13 +1,9 @@
-package nl.lengrand.imdb
+package nl.lengrand.imdb.queries
 
 import nl.lengrand.imdb.dsl.Names
-import nl.lengrand.imdb.dsl.Ratings
-import nl.lengrand.imdb.dsl.Titles
 import org.jetbrains.exposed.sql.Database
-import org.jetbrains.exposed.sql.and
 import org.jetbrains.exposed.sql.select
 import org.jetbrains.exposed.sql.transactions.transaction
-import kotlin.system.measureTimeMillis
 
 fun main(){
     val db = Database.connect(

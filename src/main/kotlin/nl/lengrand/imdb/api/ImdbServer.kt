@@ -6,6 +6,5 @@ fun main(){
     Vertx.vertx().createHttpServer()
         .requestHandler { request ->
             request.response().end("Imdb Server")
-
         }.listen(8080)
 }
