@@ -1,5 +1,6 @@
 package nl.lengrand.imdb
 
+import nl.lengrand.imdb.dsl.Names
 import nl.lengrand.imdb.dsl.Ratings
 import nl.lengrand.imdb.dsl.Titles
 import org.jetbrains.exposed.sql.Database
@@ -16,11 +17,14 @@ fun main(){
         password = ""
     )
 
-    // Find a actors with a given name
-//    transaction(db) {
-//        var result = Names.select { Names.primaryName like "%cotillard" }.toList()
-//        println(result.size)
-//    }
+//     Find a actors with a given name
+    transaction(db) {
+        var result = Names.select { Names.primaryName like "%cotillard" }.toList()
+        println(result.size)
+    }
+
+    // Trying with DAO
+
 
     // Find all the movies someone played in
     // Not possible currently, need join table
@@ -60,17 +64,17 @@ fun main(){
 //        }
 //    }}");
 
-    println("Ratings query took : ${measureTimeMillis() {
-        transaction(db) {
-            var result = (Titles innerJoin Ratings).slice(Titles.primaryTitle, Titles.titleType, Ratings.averageRating, Ratings.numVotes).select {
-                ((Titles.primaryTitle like "%batman%") and (Titles.titleType like "movie")
-                        and Titles.tconst.eq(Ratings.tconst))
-            }.orderBy(Ratings.averageRating)
-                .toList()
-
-            println(result.size)
-            println(result)
-            println(result.last())
-        }
-    }}");
+//    println("Ratings query took : ${measureTimeMillis() {
+//        transaction(db) {
+//            var result = (Titles innerJoin Ratings).slice(Titles.primaryTitle, Titles.titleType, Ratings.averageRating, Ratings.numVotes).select {
+//                ((Titles.primaryTitle like "%batman%") and (Titles.titleType like "movie")
+//                        and Titles.tconst.eq(Ratings.tconst))
+//            }.orderBy(Ratings.averageRating)
+//                .toList()
+//
+//            println(result.size)
+//            println(result)
+//            println(result.last())
+//        }
+//    }}");
 }
